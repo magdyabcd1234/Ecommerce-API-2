@@ -12,18 +12,7 @@ import {
   ShoppingBag,
 } from "lucide-react";
 
-
 import { useShop } from "@/context/ShopContext";
-import { useState } from "react";
-
-type CartItem = {
-  id: number;
-  price: number;
-  qty: number;
-  title?: string;
-};
-
-
 
 
 const containerVariants = {
@@ -53,7 +42,6 @@ const itemVariants = {
 };
 
 export default function CartPage() {
-
   const {
     cart,
     increaseQty,
@@ -62,10 +50,10 @@ export default function CartPage() {
   } = useShop();
 
   // ================= TOTAL PRICE =================
-const subtotal = (cart || []).reduce(
-  (acc, item) => acc + item.price * item.qty,
-  0
-);
+const subtotal = (cart || []).reduce((acc, item) => {
+  return acc + (item?.price || 0) * (item?.qty || 0);
+}, 0);
+
   const shipping = subtotal > 0 ? 20 : 0;
 
   const total = subtotal + shipping;
