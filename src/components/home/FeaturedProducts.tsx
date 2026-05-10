@@ -22,18 +22,24 @@ const ProductSkeleton = () => {
 };
 
 export default function FeaturedProducts() {
-  const [products, setProducts] = useState([]);
+  type Product = {
+  id: number;
+  title: string;
+  price: number;
+  thumbnail: string;
+};
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const { cart, wishlist, toggleCartItem, toggleWishlistItem } = useShop();
 
 
   // ✅ format price
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(price);
-  };
+const formatPrice = (price: number): string => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+};
 
   // ✅ fetch products
   useEffect(() => {
@@ -73,7 +79,7 @@ export default function FeaturedProducts() {
             ? Array.from({ length: 4 }).map((_, i) => (
                 <ProductSkeleton key={i} />
               ))
-            : products.slice(0,8).map((product, index) => (
+            : products.slice(0,8).map((product: Product, index: number) => (
               
                 <motion.div
                   key={product.id}

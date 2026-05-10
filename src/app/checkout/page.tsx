@@ -3,6 +3,8 @@
 import { useShop } from "@/context/ShopContext";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import React from "react";
+import { Variants, easeOut } from "framer-motion";
 
 export default function CheckoutPage() {
 const [name, setName] = useState("");
@@ -21,7 +23,7 @@ const [address, setAddress] = useState("");
 
   const total = subtotal + shipping;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   if (!name || !email || !phone || !address) {
@@ -41,11 +43,11 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 50,
-    scale: 0.96,
+    y: 60,
+    scale: 0.95,
   },
   visible: {
     opacity: 1,
@@ -53,7 +55,7 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 };

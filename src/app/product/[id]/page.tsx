@@ -7,9 +7,19 @@ import { ShoppingCart, Heart } from "lucide-react";
 import { useShop } from "@/context/ShopContext";
 
 export default function ProductDetails() {
-  const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const { id } = useParams() as { id: string };
+    type Product = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  thumbnail: string;
+};
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
+
+
+
 
   const {
     toggleCartItem,

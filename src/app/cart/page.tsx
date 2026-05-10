@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import { Variants, easeOut } from "framer-motion";
 
 import {
   Minus,
@@ -24,7 +25,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 60,
@@ -36,11 +37,10 @@ const itemVariants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 };
-
 export default function CartPage() {
   const {
     cart,
