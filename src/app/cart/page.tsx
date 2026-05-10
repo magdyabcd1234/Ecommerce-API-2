@@ -50,9 +50,10 @@ export default function CartPage() {
   } = useShop();
 
   // ================= TOTAL PRICE =================
-const subtotal = (cart || []).reduce((acc, item) => {
-  return acc + (item?.price || 0) * (item?.qty || 0);
-}, 0);
+  const subtotal = cart.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );
 
   const shipping = subtotal > 0 ? 20 : 0;
 
