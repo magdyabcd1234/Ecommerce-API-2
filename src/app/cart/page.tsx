@@ -12,7 +12,18 @@ import {
   ShoppingBag,
 } from "lucide-react";
 
+
 import { useShop } from "@/context/ShopContext";
+import { useState } from "react";
+
+type CartItem = {
+  id: number;
+  price: number;
+  qty: number;
+  title?: string;
+};
+
+
 
 
 const containerVariants = {
@@ -42,6 +53,7 @@ const itemVariants = {
 };
 
 export default function CartPage() {
+
   const {
     cart,
     increaseQty,
