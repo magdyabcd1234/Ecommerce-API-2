@@ -6,7 +6,7 @@ import { ShoppingCart, Heart, User } from "lucide-react";
 import modalImg from "@/public/images/a2.jpg";
 import Image from "next/image";
 import { useShop } from "@/context/ShopContext";
-import { SignIn, SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -41,13 +41,13 @@ export default function Navbar() {
 
         
     {isSignedIn ? (
-    <UserButton />
+    <UserButton  />
   ) : (
- <SignInButton mode="modal">
-  <button className="flex gap-4 items-center px-4 py-2 bg-black text-white rounded-md hover:bg-white transition-all duration-300 border hover:border-black hover:text-black">
-    <SignIn /> Sign In 
-  </button>
-</SignInButton>
+    <SignInButton mode="modal">
+      <button className="flex gap-4 items-center px-4 py-2 bg-black text-white rounded-md hover:bg-white transition-all duration-300 border hover:border-black hover:text-black">
+        Sign in with google <User />
+      </button>
+    </SignInButton>
   )}
 
         <ul className="flex items-center gap-4">
