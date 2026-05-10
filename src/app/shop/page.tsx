@@ -250,7 +250,7 @@ const cardVariants = {
                     className="w-40 h-40 object-contain"
                   >
                     <source
-                      src="/Loading4.webm"
+                      src="/Loading3.webm"
                       type="video/webm"
                     />
                   </video>
@@ -347,7 +347,7 @@ const cardVariants = {
       className="w-72 h-72 object-contain"
     >
       <source
-        src="/Loading3.webm"
+        src="/Loading4.webm"
         type="video/webm"
       />
     </video>
