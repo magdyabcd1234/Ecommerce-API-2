@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import Navbar from "@/components/layout/Navbar";
+import { ShopProvider } from "@/context/ShopContext";
+import Toast from "@/components/ui/Toast";
+import Footer from "@/components/layout/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +16,11 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +36,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={inter.variable}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <ClerkProvider>
+      <body className="min-h-full flex flex-col">
+        <ShopProvider>
+           <Navbar />
+        {children}
+         <Toast />
+        </ShopProvider>
+        <Footer />
+        </body>
+        </ClerkProvider>
     </html>
   );
 }
